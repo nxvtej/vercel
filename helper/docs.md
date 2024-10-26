@@ -31,3 +31,52 @@ docker file ready ki hai or main file hai,
 docker file hai container k liye or entry point dene k liye
 
     main file entry point hai, jo clone krega or fer script file ko run kr dega
+
+now after script from build server
+
+    create S3 bucket
+    make it public via policy
+    get the bucket name
+    add to code
+    create IAM user give admin access to it so data can be added via this credentials
+
+next step after creating user in aws
+add credentials from there
+configure aws configure
+then use command
+aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 010526262167.dkr.ecr.ap-southeast-2.amazonaws.com  
+ Login Succeeded
+
+now ready to shot to aws
+
+now configured useer and docker with aws
+
+now locally build image using docker build and then push
+docker build -t vercel-100xnvai .
+
+After the build completes, tag your image so you can push the image to this repository:
+
+docker tag vercel-100xnavi:latest 010526262167.dkr.ecr.ap-southeast-2.amazonaws.com/vercel-100xnavi:latest
+
+nexct step
+
+Run the following command to push this image to your newly created AWS repository:
+
+docker push 010526262167.dkr.ecr.ap-southeast-2.amazonaws.com/vercel-100xnavi:latest
+
+next step
+
+STEP 3:
+when done with pushing image
+
+go to ECS and create cluster and then try
+something something
+
+now i have pushed
+
+STEP: ECS (create cluster service where my containers will run)
+create cluster
+create task
+then inside task assign image URI to it
+
+check if one task is working or not
